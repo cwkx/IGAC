@@ -9,4 +9,4 @@
 
 ## Hotkeys
 
-[readme.pdf](https://github.com/cwkx/IGAC/readme.pdf)
+[Click here to view application hotkeys](https://github.com/cwkx/IGAC/blob/master/readme.pdf)

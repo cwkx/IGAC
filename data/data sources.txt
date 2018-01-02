@@ -1,0 +1,20 @@
+@article{wang09,
+author     = {Wang, Li and He, Lei and Mishra, Arabinda and Li, Chunming},
+title      = {Active contours driven by local {Gaussian} distribution fitting energy},
+journal    = {Signal Processing},
+volume     = {89},
+number     = {12},
+pages      = {2435-2447},
+year       = {2009}
+}
+
+@inproceedings{roberts2010work,
+author      = {Roberts, Mike and Packer, Jeff and Sousa, Mario Costa and Mitchell, Joseph Ross},
+title       = {A work-efficient {GPU} Algorithm for level set segmentation},
+booktitle   = {Proceedings of the Conference on High Performance Graphics},
+pages       = {123--132},
+numpages    = {10},
+location    = {Saarbrucken, Germany},
+publisher   = {Eurographics Association},
+year        = {2010}
+}

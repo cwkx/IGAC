@@ -1,3 +1,8 @@
+## Paper
+
+This code implements "Interactive GPU active contours for segmenting inhomogeneous objects". Please cite if you find it useful.
+https://link.springer.com/article/10.1007/s11554-017-0740-1
+
 ## Readme
 
 - Compile using CMake

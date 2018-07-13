@@ -7,7 +7,7 @@ if(~isdeployed)
 end
 
 %% Run this script from the top-level directory containing data/...
-im = single(open3D('data/lowbag.tif'));
+im = single(open3D('data/vessel2D.tif'));
 im = (im - min(im(:)))/(max(im(:))-min(im(:)));
 %im = permute(im, [3 1 2]);
 %im = imresize3D(im, [1.5 1.5 1.5]);
@@ -28,44 +28,7 @@ params = {'--platform', 'nvidia';
           '--cr',        15.0
           '--maxiter'    -1};
 
-pm = [];
-jm = [];
-for i=18:-0.05:5
-    [noisyIm,peaksnr] = noiseAtPSNR(im, i, 'multifreq');
-    gpuPhi = single(gpuProcess(double(im), params));
-    jm(:,end+1) = jaccardIndex(phi, gpuPhi)
-    pm(:,end+1) = peaksnr;
-end
-
-ps = [];
-js = [];
-for i=18:-0.05:5
-    [noisyIm,peaksnr] = noiseAtPSNR(im, i, 'speckle');
-    gpuPhi = single(gpuProcess(double(noisyIm), params));
-    js(:,end+1) = jaccardIndex(phi, gpuPhi)
-    ps(:,end+1) = peaksnr;
-end
-
-pp = [];
-jp = [];
-for i=18:-0.05:5
-    [noisyIm,peaksnr] = noiseAtPSNR(im, i, 'pepper');
-    gpuPhi = single(gpuProcess(double(noisyIm), params));
-    jp(:,end+1) = jaccardIndex(phi, gpuPhi)
-    pp(:,end+1) = peaksnr;
-end
-
-pg = [];
-jg = [];
-for i=18:-0.05:5
-    [noisyIm,peaksnr] = noiseAtPSNR(im, i, 'pepper');
-    gpuPhi = single(gpuProcess(double(noisyIm), params));
-    jg(:,end+1) = jaccardIndex(phi, gpuPhi)
-    pg(:,end+1) = peaksnr;
-end
-
 cpuPhi = gather(single(cpuProcess(gpuArray(single(im)), params)));
 
-figure, imshow3D(gpuPhi);
 figure, imshow3D(cpuPhi);
 
